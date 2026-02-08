@@ -27,7 +27,20 @@ class ProductTest {
     }
 
     @Test
+    void testGetProductNameNull() {
+        product.setProductName(null);
+        assertNull(product.getProductName());
+    }
+
+    @Test
     void testGetProductQuantity() {
         assertEquals(100, this.product.getProductQuantity());
+    }
+
+    @Test
+    void testGetProductQuantityNegative() {
+        product.setProductQuantity(-10);
+        // program belum ada validasi untuk quantity negatif
+        assertEquals(-10, product.getProductQuantity());
     }
 }
