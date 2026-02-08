@@ -12,13 +12,24 @@
     <form th:action="@{/product/edit}" th:object="${product}" method="post">
         <input type="hidden" th:field="*{productId}" />
 
-        <label>Name</label>
-        <input type="text" th:field="*{productName}" />
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text"
+                   th:field="*{productName}"
+                   class="form-control"
+                   placeholder="Enter product name">
+        </div>
 
-        <label>Quantity</label>
-        <input type="number" th:field="*{productQuantity}" />
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="number"
+                   th:field="*{productQuantity}"
+                   class="form-control"
+                   placeholder="Enter quantity">
+        </div>
 
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a th:href="@{/product/list}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 
