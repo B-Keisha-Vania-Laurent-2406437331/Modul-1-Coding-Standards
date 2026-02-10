@@ -5,12 +5,13 @@ import lombok.Setter;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 @Getter @Setter
 public class Product {
     private String productId;
 
-    @NotNull(message = "Product name cannot be empty")
+    @NotBlank(message = "Product name cannot be empty")
     private String productName;
 
     @NotNull(message = "Quantity cannot be empty")
