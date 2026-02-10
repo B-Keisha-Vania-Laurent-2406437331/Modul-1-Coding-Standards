@@ -16,5 +16,5 @@ public class Product {
 
     @NotNull(message = "Quantity cannot be empty")
     @Min(value = 1, message = "Quantity must be greater than 0")
-    private int productQuantity;
+    private Integer productQuantity;
 }

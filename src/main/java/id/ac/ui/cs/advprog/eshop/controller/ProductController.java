@@ -27,7 +27,7 @@ public class ProductController {
     @PostMapping("/create")
     public String createProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "createProduct";
+            return "CreateProduct";
         }
 
         service.create(product);
@@ -49,7 +49,10 @@ public class ProductController {
     }
 
     @PostMapping("/edit")
-    public String editProductPost(@ModelAttribute Product product) {
+    public String editProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "EditProduct";
+        }
         service.edit(product);
         return "redirect:list";
     }
