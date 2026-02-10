@@ -12,8 +12,9 @@ In implementing this project, I have applied several Clean Code and Secure Codin
 ## 2. Areas for Improvement
 Despite the implementations above, I identified a few critical areas where the code quality and security can be improved:
 
-* **Input Validation:** Previously, the application crashed with a `TypeMismatchException` when submitting empty forms because the primitive int type could not handle null values. Additionally, there was no validation preventing negative quantities.  
-    * *The Improvement:* I refactored the model to use the `Integer` Wrapper Class instead of `int`, allowing safe handling of null values. I then implemented validation using annotations like `@NotNull` and `@Min(1)` and updated the Controller to use `@Valid` and `BindingResult`. This ensures that invalid input is caught and not causing a system crash (Whitelabel Error Page).
+* **Input Validation:** Previously, the application crashed with a `TypeMismatchException` when submitting empty forms because the primitive `int` type could not handle null values. Additionally, there was no validation preventing negative quantities.  
+    * *The Improvement (BackEnd):* I refactored the model to use the `Integer` Wrapper Class instead of `int`, allowing safe handling of null values. I then implemented validation using annotations like `@NotNull` and `@Min(1)` and updated the Controller to use `@Valid` and `BindingResult`. This ensures that invalid input is caught and not causing a system crash (Whitelabel Error Page).
+    * *The Improvement (FrontEnd):* I implemented **Client-Side** Validation directly in the HTML. I added the `required` attribute to ensure fields are not empty and the `min="1"` attribute to restrict negative input.
  
 # Reflection 2
 
