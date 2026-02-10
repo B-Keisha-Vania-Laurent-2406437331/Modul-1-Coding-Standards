@@ -1,7 +1,7 @@
 # Reflection 1
 
-## 1. Clean Code Principles & Secure Coding
-In implementing this project, I have applied several Clean Code and Secure Coding principles to ensure the software is maintainable, readable, and secure:
+## 1. Coding Principles
+In implementing this project, I have applied several Clean Code and Secure Coding practices to ensure the software is maintainable, readable, and secure:
 
 * **Meaningful Names (Penamaan yang Bermakna):** I used clear and descriptive names for variables, methods, and classes (e.g., `ProductRepository`, `create`, `delete`). This practice makes the code **self-documenting**, allowing other developers to understand the logic easily without needing extensive comments.
 
@@ -12,11 +12,8 @@ In implementing this project, I have applied several Clean Code and Secure Codin
 ## 2. Areas for Improvement
 Despite the implementations above, I identified a few critical areas where the code quality and security can be improved:
 
-* **Input Validation & Sanitization:** Currently, the application accepts raw input, which poses risks to data integrity (e.g., creating products with negative quantities) and security vulnerabilities like **Cross-Site Scripting (XSS)**.  
-    * *Improvement Plan:* I should implement server-side validation using annotations such as `@NotBlank` and `@Min(0)` to ensure only valid data is processed.
-
-* **File Naming Consistency:** I found inconsistencies between the controller's return values and actual filenames (e.g., returning `"createProduct"` while the file is named `"CreateProduct.html"`).  
-    * *Improvement Plan:* I must standardize the naming convention to match exactly (Case-Sensitive). This is crucial to prevent `TemplateInputException` errors when deploying to case-sensitive environments like **Linux** or **GitHub Actions**.
+* **Input Validation:** Previously, the application crashed with a `TypeMismatchException` when submitting empty forms because the primitive int type could not handle null values. Additionally, there was no validation preventing negative quantities.  
+    * *The Improvement:* I refactored the model to use the `Integer` Wrapper Class instead of `int`, allowing safe handling of null values. I then implemented validation using annotations like `@NotNull` and `@Min(1)` and updated the Controller to use `@Valid` and `BindingResult`. This ensures that invalid input is caught and not causing a system crash (Whitelabel Error Page).
  
 # Reflection 2
 
